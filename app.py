@@ -1,34 +1,26 @@
-# eoq_calculator.py
-
+# app.py
+import streamlit as st
 import math
 
-def hitung_eoq(D, S, H):
-    """
-    Menghitung EOQ (Economic Order Quantity)
-    D: Permintaan tahunan
-    S: Biaya pemesanan
-    H: Biaya penyimpanan
-    """
-    eoq = math.sqrt((2 * D * S) / H)
-    total_order = D / eoq
-    total_cost = (eoq / 2 * H) + (D / eoq * S)
-    return eoq, total_cost, total_order
+st.set_page_config(page_title="Kalkulator EOQ", page_icon="📦")
+st.title("📦 Aplikasi Perhitungan EOQ (Economic Order Quantity)")
 
-def tampilkan_hasil(D, S, H):
-    eoq, total_cost, total_order = hitung_eoq(D, S, H)
-    print("=== Hasil Perhitungan EOQ untuk Produksi Es Krim ===")
-    print(f"Permintaan tahunan (liter): {D}")
-    print(f"Biaya pemesanan per pesanan: Rp{S:,.0f}")
-    print(f"Biaya penyimpanan per liter/tahun: Rp{H:,.0f}")
-    print(f"\n>> EOQ (Jumlah optimal pemesanan): {eoq:.2f} liter")
-    print(f">> Jumlah pemesanan per tahun: {total_order:.2f} kali")
-    print(f">> Total biaya persediaan tahunan: Rp{total_cost:,.2f}")
+st.markdown("Simulasi sistem persediaan bahan baku untuk menentukan jumlah pemesanan optimal.")
 
-# Studi kasus es krim
-if __name__ == "__main__":
-    permintaan_tahunan = 10000   # D
-    biaya_pemesanan = 200000     # S
-    biaya_penyimpanan = 500      # H
+st.subheader("📥 Input Data")
+D = st.number_input("Permintaan tahunan (D)", value=10000)
+S = st.number_input("Biaya pemesanan per pesanan (S)", value=200000)
+H = st.number_input("Biaya penyimpanan per unit per tahun (H)", value=500)
 
-    tampilkan_hasil(permintaan_tahunan, biaya_pemesanan, biaya_penyimpanan)
+if st.button("Hitung EOQ"):
+    if D > 0 and S > 0 and H > 0:
+        eoq = math.sqrt((2 * D * S) / H)
+        jumlah_pemesanan = D / eoq
+        total_biaya = (eoq / 2 * H) + (D / eoq * S)
 
+        st.subheader("📊 Hasil Perhitungan")
+        st.success(f"Jumlah Pemesanan Optimal (EOQ): {eoq:.2f} unit")
+        st.info(f"Jumlah Pemesanan per Tahun: {jumlah_pemesanan:.2f} kali")
+        st.warning(f"Total Biaya Persediaan Tahunan: Rp {total_biaya:,.2f}")
+    else:
+        st.error("Mohon masukkan semua input dengan benar!")
