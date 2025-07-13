@@ -1,4 +1,4 @@
-import streamlit as st
-import math
-import matplotlib.pyplot as plt
-import numpy as np
+streamlit as st
+math
+matplotlib.pyplot as plt
+numpy as np
