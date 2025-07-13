@@ -22,7 +22,11 @@ UMKM “EsKrim Lumer” memproduksi es krim setiap hari. Susu segar sebagai baha
 **🎯 Tujuan:**  
 Menghitung jumlah pemesanan optimal (EOQ), frekuensi pemesanan, dan total biaya persediaan tahunan.
 
-
+**🔢 Rumus EOQ:**  
+\[
+EOQ = \sqrt{\\frac{2DS}{H}} = \sqrt{\\frac{2 \\times 10000 \\times 200000}{500}} = 894,43 \text{ liter}
+\]
+    """)
 
 # Input pengguna
 st.subheader("📥 Masukkan Data Produksi")
