@@ -1,8 +1,8 @@
 # app.py
-import streamlit as st
+import streamlit 
 import math
-import matplotlib.pyplot as plt
-import numpy as np
+import matplotlib.pyplot 
+import numpy 
 
 st.set_page_config(page_title="Kalkulator EOQ", page_icon="📦")
 st.title("📦 Aplikasi Perhitungan EOQ (Economic Order Quantity)")
