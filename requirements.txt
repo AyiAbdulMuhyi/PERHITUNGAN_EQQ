@@ -1,4 +1,4 @@
-streamlit 
+streamlit as st
 math
-matplotlib.pyplot 
-numpy 
+matplotlib.pyplot as plt
+numpy as np
